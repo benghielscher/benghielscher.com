@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BEng Hielscher — structural engineer and engineering content creator. Videos, newsletter and resources for engineers.">
+  <meta property="og:title" content="BEng Hielscher">
+  <meta property="og:description" content="Structural engineer and engineering content creator.">
+  <meta property="og:url" content="https://benghielscher.com">
+  <meta property="og:type" content="website">
+  <title>BEng Hielscher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #ffffff;
+      --bg-card: #f5f5f5;
+      --border:  #e5e5e5;
+      --text:    #111111;
+      --muted:   #888888;
+
+      --font-display: 'Instrument Serif', Georgia, serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.75rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      padding: 1.75rem 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 2.5rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 440px;
+    }
+
+    .hero-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── NEWSLETTER CARD ── */
+    .newsletter-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin: 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-card-text h2 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .newsletter-card-text p {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover { background: var(--bg-card); }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 2.75rem; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── LINK ROWS ── */
+    .link-list { display: flex; flex-direction: column; }
+
+    .link-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: opacity 0.15s;
+    }
+
+    .link-row:first-child { border-top: 1px solid var(--border); }
+    .link-row:hover { opacity: 0.55; }
+
+    .link-row-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .link-row-title {
+      font-size: 0.9375rem;
+      font-weight: 400;
+    }
+
+    .link-row-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .link-row-arrow {
+      font-size: 0.875rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-left: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .link-row:hover .link-row-arrow { transform: translateX(4px); }
+
+    /* ── CONTACT ── */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-row:first-child { border-top: 1px solid var(--border); }
+
+    .contact-row p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero             { animation: fadeUp 0.5s ease both; }
+    .newsletter-card  { animation: fadeUp 0.5s 0.1s ease both; }
+    .section          { animation: fadeUp 0.5s 0.15s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { width: 72px; height: 72px; order: -1; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .newsletter-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">BEng Hielscher</span>
+    <ul class="nav-links">
+      <li><a href="https://benhielscher.substack.com/" target="_blank">Newsletter</a></li>
+      <li><a href="https://shop.benghielscher.com/" target="_blank">Shop</a></li>
+      <li><a href="mailto:benghielscher@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>I'm Ben — a structural engineer and engineering content creator.</h1>
+      <p>I create videos, worked examples, blog posts, and practical resources to help students and engineers become more confident structural designers. I also share insights and lessons from my experience working in the industry.</p>
+    </div>
+    <img
+      class="hero-photo"
+      src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=375,fit=crop/THoTIfQDQ17gHaid/final-0GgeOdkt7Sk3oaC2.png"
+      alt="Ben Hielscher"
+      onerror="this.style.display='none'"
+    >
+  </div>
+
+  <!-- NEWSLETTER CARD -->
+  <div class="newsletter-card">
+    <div class="newsletter-card-text">
+      <h2>The BEng Bulletin</h2>
+      <p>Monthly newsletter — stories, experiences, learnings, advice and interesting links from a working structural engineer.</p>
+    </div>
+    <a href="https://benhielscher.substack.com/" target="_blank" class="btn btn-primary">Subscribe free →</a>
+  </div>
+
+  <!-- CREATING -->
+  <div class="section">
+    <p class="section-label">Creating</p>
+    <div class="link-list">
+
+      <a href="https://shop.benghielscher.com/" target="_blank" class="link-row">
+        <div class="link-row-left">
+          <span class="link-row-title">Engineering Resources</span>
+          <span class="link-row-desc">Design notes, spreadsheets, checklists and templates for engineers.</span>
+        </div>
+        <span class="link-row-arrow">→</span>
+      </a>
+
+      <a href="https://benhielscher.substack.com/" target="_blank" class="link-row">
+        <div class="link-row-left">
+          <span class="link-row-title">The BEng Bulletin</span>
+          <span class="link-row-desc">Monthly newsletter — stories, experiences and interesting links.</span>
+        </div>
+        <span class="link-row-arrow">→</span>
+      </a>
+
+      <a href="https://www.youtube.com/@BEngHielscher" target="_blank" class="link-row">
+        <div class="link-row-left">
+          <span class="link-row-title">YouTube</span>
+          <span class="link-row-desc">Videos on engineering, tech, productivity and self-development.</span>
+        </div>
+        <span class="link-row-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <p class="section-label">Contact</p>
+    <div class="link-list">
+      <div class="contact-row">
+        <p>Want to get in touch? Send me an email.</p>
+        <a href="mailto:benghielscher@gmail.com" class="btn btn-secondary">Email me →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul class="footer-socials">
+      <li>
+        <a href="https://www.youtube.com/@BEngHielscher" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          YouTube
+        </a>
+      </li>
+      <li>
+        <a href="http://www.instagram.com/beng.hielscher" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+      </li>
+      <li>
+        <a href="http://linkedin.com/in/benhielscher" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+    <span class="footer-copy">© 2026 BEng Hielscher</span>
+  </footer>
+
+</div><!-- /wrap -->
+
+</body>
+</html>
