@@ -18,7 +18,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -27,7 +26,6 @@
       --border:  #e5e5e5;
       --text:    #111111;
       --muted:   #888888;
-
       --font-display: 'Instrument Serif', Georgia, serif;
     }
 
@@ -45,47 +43,15 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ── LAYOUT ── */
     .wrap {
       max-width: 680px;
       margin: 0 auto;
       padding: 0 1.75rem;
     }
 
-    /* ── NAV ── */
-    nav {
-      padding: 1.75rem 0 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-name {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.8125rem;
-      font-weight: 400;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
     /* ── HERO ── */
     .hero {
-      padding: 2.5rem 0 3rem;
+      padding: 3rem 0 3rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -96,10 +62,12 @@
     .hero-photo {
       width: 110px;
       height: 110px;
-      border-radius: 13px;
+      border-radius: 50%;
       object-fit: cover;
       border: 1px solid var(--border);
       flex-shrink: 0;
+      display: block;
+      margin: 0 auto;
     }
 
     .hero-text h1 {
@@ -207,15 +175,8 @@
       gap: 0.15rem;
     }
 
-    .link-row-title {
-      font-size: 0.9375rem;
-      font-weight: 400;
-    }
-
-    .link-row-desc {
-      font-size: 0.8125rem;
-      color: var(--muted);
-    }
+    .link-row-title { font-size: 0.9375rem; font-weight: 400; }
+    .link-row-desc  { font-size: 0.8125rem; color: var(--muted); }
 
     .link-row-arrow {
       font-size: 0.875rem;
@@ -226,6 +187,77 @@
     }
 
     .link-row:hover .link-row-arrow { transform: translateX(4px); }
+
+    /* ── PRODUCTS SCROLL ── */
+    .products-outer {
+      position: relative;
+      margin: 0 -1.75rem;
+    }
+
+    .products-scroll {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0.25rem 1.75rem 0.75rem;
+    }
+
+    .products-scroll::-webkit-scrollbar { display: none; }
+
+    .products-outer::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0.75rem;
+      width: 3.5rem;
+      background: linear-gradient(to right, transparent, #ffffff);
+      pointer-events: none;
+    }
+
+    .product-card {
+      flex-shrink: 0;
+      width: 168px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      transition: opacity 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .product-card-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-card-body {
+      padding: 0.6rem 0.75rem 0.75rem;
+    }
+
+    .product-card-title {
+      font-size: 0.775rem;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .product-card-desc {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
 
     /* ── CONTACT ── */
     .contact-row {
@@ -271,10 +303,7 @@
 
     .footer-socials a:hover { color: var(--text); }
 
-    .footer-copy {
-      font-size: 0.8125rem;
-      color: var(--muted);
-    }
+    .footer-copy { font-size: 0.8125rem; color: var(--muted); }
 
     /* ── FADE IN ── */
     @keyframes fadeUp {
@@ -282,9 +311,9 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero             { animation: fadeUp 0.5s ease both; }
-    .newsletter-card  { animation: fadeUp 0.5s 0.1s ease both; }
-    .section          { animation: fadeUp 0.5s 0.15s ease both; }
+    .hero            { animation: fadeUp 0.5s ease both; }
+    .newsletter-card { animation: fadeUp 0.5s 0.1s ease both; }
+    .section         { animation: fadeUp 0.5s 0.15s ease both; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 520px) {
@@ -297,17 +326,7 @@
 
 <div class="wrap">
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-name">BEng Hielscher</span>
-    <ul class="nav-links">
-      <li><a href="https://benhielscher.substack.com/" target="_blank">Newsletter</a></li>
-      <li><a href="https://shop.benghielscher.com/" target="_blank">Shop</a></li>
-      <li><a href="mailto:benghielscher@gmail.com">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
+  <!-- HERO (no nav) -->
   <div class="hero">
     <img
       class="hero-photo"
@@ -362,6 +381,80 @@
     </div>
   </div>
 
+  <!-- PRODUCTS HORIZONTAL SCROLL -->
+  <div class="section">
+    <p class="section-label">Products</p>
+    <div class="products-outer">
+      <div class="products-scroll">
+
+        <a href="https://payhip.com/b/WATdL" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1hdqkteikimrup51rd1v2md61r.png" alt="RC Design Notes">
+          <div class="product-card-body">
+            <div class="product-card-title">Reinforced Concrete Design Notes and Spreadsheet</div>
+            <div class="product-card-desc">Step-by-step design notes and flowcharts covering bending, shear and deflection for singly reinforced rectangular concrete beams and slabs, and a practical Excel design spreadsheet.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/nN5Ya" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1hl1fpgum16o517j61qd51fn54d6u.png" alt="Retaining Wall Design">
+          <div class="product-card-body">
+            <div class="product-card-title">Retaining Wall Design Notes and Spreadsheet</div>
+            <div class="product-card-desc">Essential design notes, worked examples, and an Excel spreadsheet covering lateral earth pressures, global stability checks and design action calculations for cantilever retaining walls.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/RNv5Y" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1ie0cladsb5r11pjg251gor18eu18.png" alt="Pad Footing Design">
+          <div class="product-card-body">
+            <div class="product-card-title">Pad Footing Design Notes and Spreadsheet</div>
+            <div class="product-card-desc">Essential design notes, worked examples, and an Excel spreadsheet covering bearing pressure, bending, one-way shear and punching shear for pad footings under axial and combined axial-bending loads.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/UaR3l" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1j2mbmbf8i7518834obt471elbu.png" alt="Steel Beam Analysis">
+          <div class="product-card-body">
+            <div class="product-card-title">Steel Beam Analysis and Design Notes and Spreadsheet</div>
+            <div class="product-card-desc">Essential design notes, worked examples, and an Excel spreadsheet covering bending capacity, shear capacity and deflection analysis across a comprehensive range of steel section types.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/9P1kl" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1i1h9d4cn1f171ijj18hb1n4s1v0ft.png" alt="Site Inspection Checklists">
+          <div class="product-card-body">
+            <div class="product-card-title">Site Inspection Checklists</div>
+            <div class="product-card-desc">A collection of 13 ready-to-use structural inspection checklists covering piles, shallow footings, slabs, retaining walls, blockwork, columns, and steel and timber framing.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/T1AIO" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1jk70d8jd1gb31uff14v51kdo1abb16.png" alt="Blockwork Design">
+          <div class="product-card-body">
+            <div class="product-card-title">Core-filled Blockwork Design Notes and Spreadsheet</div>
+            <div class="product-card-desc">Practical worked examples, quick design reference tables, and an Excel spreadsheet covering bending, out-of-plane shear, in-plane shear, and compression design for reinforced core-filled masonry blockwork.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/rqoC8" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1jfmpgvtr49814oji3r1eup1h415.png" alt="Resume Template Pro">
+          <div class="product-card-body">
+            <div class="product-card-title">Resume & Portfolio Template - Pro</div>
+            <div class="product-card-desc">A professional resume and portfolio template for engineers across Canva, Microsoft Word and Google Docs — including both the original 2-column and updated 1-column layout.</div>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/GlXqf" target="_blank" class="product-card">
+          <img class="product-card-image" src="https://payhip.com/cdn-cgi/image/format=auto,width=750/https://pe56d.s3.amazonaws.com/o_1h9rj2fnr1t9kk1p1vu54p01mjd10.png" alt="Resume Template Free">
+          <div class="product-card-body">
+            <div class="product-card-title">Resume & Portfolio Template</div>
+            <div class="product-card-desc">A free, proven Canva resume and portfolio template refined over 7 years. Download it for free and pair it with the accompanying YouTube tutorials for best results.</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
   <!-- CONTACT -->
   <div class="section">
     <p class="section-label">Contact</p>
@@ -398,7 +491,7 @@
     <span class="footer-copy">© 2026 BEng Hielscher</span>
   </footer>
 
-</div><!-- /wrap -->
+</div>
 
 </body>
 </html>
