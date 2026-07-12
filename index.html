@@ -266,6 +266,32 @@
       line-height: 1.4;
     }
 
+    .products-more-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+      padding: 0 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+      scroll-snap-align: start;
+    }
+
+    .products-more-link:hover { color: var(--text); }
+
+    .products-more-arrow {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .products-more-link:hover .products-more-arrow {
+      transform: translateX(3px);
+    }
+
     /* ── CONTACT ── */
     .contact-row {
       display: flex;
@@ -458,11 +484,14 @@
           </div>
         </a>
 
+        <a href="https://shop.benghielscher.com/" target="_blank" class="products-more-link">
+          <span>More</span>
+          <span class="products-more-arrow">→</span>
+        </a>
+
       </div>
     </div>
   </div>
-
-  <!-- CONTACT -->
   <div class="section">
     <p class="section-label">Contact</p>
     <div class="link-list">
